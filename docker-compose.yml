@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile_dev
+    volumes:
+      - /var/www/html:/var/www/html
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - ~/.Xauthority:/home/user/.Xauthority:ro
+    environment:
+      - DISPLAY
+      
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile_test
+    ports:
+      - "80:80"
+      - "8000:80"
+      - "8080:80"
+    volumes:
+      - /var/www/html:/var/www/html

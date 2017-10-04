@@ -1,0 +1,4 @@
+# Docker file for an Apache PHP server
+
+FROM php:apache
+RUN ["update-rc.d", "apache2", "defaults"]
